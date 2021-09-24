@@ -10,7 +10,7 @@
 <?php $this->need('header.php'); ?>
 
 <div class="col-mb-12 col-8" id="main" role="main">
-    <?php $this->widget('Widget_Archive@index', 'type=category', 'mid=19')->to($categoryPosts); ?>
+    <?php $this->widget('Widget_Archive@index', 'pageSize=10&type=category', 'mid=19')->to($categoryPosts); ?>
     <?php while($categoryPosts->next()): ?>
         <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
 			<h2 class="post-title" itemprop="name headline"><a class="title-color" itemprop="url" href="<?php $categoryPosts->permalink() ?>"><?php $categoryPosts->title() ?></a></h2>
@@ -26,6 +26,7 @@
             </div>
         </article>
     <?php endwhile; ?>
+    <?php $categoryPosts->pageNav('&laquo; 前一页', '后一页 &raquo;'); ?>
 </div><!-- end #main-->
 
 <?php

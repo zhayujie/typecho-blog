@@ -1369,7 +1369,6 @@ class Widget_Archive extends Widget_Abstract_Contents
         } else {
             $hasPushed = $this->pluginHandle()->handle($this->parameter->type, $this, $select);
         }
-        
         /** 初始化皮肤函数 */
         $functionsFile = $this->_themeDir . 'functions.php';
         if ((!$this->_invokeFromOutside || $this->parameter->type == 404) && file_exists($functionsFile)) {
@@ -1377,6 +1376,13 @@ class Widget_Archive extends Widget_Abstract_Contents
             if (function_exists('themeInit')) {
                 themeInit($this);
             }
+        }
+        /** 首页分页时过滤随笔 */
+        if ($this->_archiveType == 'index') {
+            $select->join('table.relationships', 'table.relationships.cid = table.contents.cid', Typecho_Db::LEFT_JOIN)
+              ->join('table.metas', 'table.metas.mid = table.relationships.mid', Typecho_Db::LEFT_JOIN)
+              ->where('table.metas.type = ?', 'category')
+              ->where('table.relationships.mid <> ?', 19);
         }
 
         /** 如果已经提前压入则直接返回 */

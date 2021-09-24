@@ -5,7 +5,7 @@
  * @package 自定义开发主题
  * @author zhayujie
  * @version 2.0
- * @link https://zhayujie.com
+ * @link https://zhayujie.com/
  */
 
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
