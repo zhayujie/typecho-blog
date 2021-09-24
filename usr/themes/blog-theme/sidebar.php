@@ -47,6 +47,8 @@
 		<h3 class="widget-title"><?php _e('友链'); ?></h3>
         <ul class="widget-list">
             <li><a href="https://www.zhihu.com/people/wenyang_duan" target='_blank'>Duan</a></li>
+        </ul>
+        <ul class="widget-list">
             <li><a href="http://www.johnwii.com/" target='_blank'>Johnwii</a></li>
         </ul>
 	</section>
